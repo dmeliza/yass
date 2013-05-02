@@ -20,13 +20,11 @@ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86
 LIBDIR = lib$(SUFFIX)
 VERSION = 0.0.2
 DISTDIR = yass-$(VERSION)
-CPPFLAGS += -O3 -Wall -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
-#CPPFLAGS += -march=pentium4
+CPPFLAGS += -O3 -Wall -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" `freetype-config --cflags` `pkg-config jack --cflags`
 
 
 LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L/usr/X11R6/$(LIBDIR)
-LDLIBS += -lclthreads -lclxclient -ljack -lpthread -lXft -lX11 -lrt
-
+LDLIBS += -lclthreads -lclxclient -lX11 `freetype-config --libs` `pkg-config jack --libs`
 
 YASS_O = ringbuff.o jclient.o mainwin.o styles.o yass.o
 YASS_H = ringbuff.h jclient.h mainwin.h styles.h

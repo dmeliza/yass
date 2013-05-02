@@ -1,8 +1,8 @@
-YASS 0.0.1 -- Release notes
-___________________________
+Yet Another Scrolling Scope - an oscilloscope for JACK
 
-
-See INSTALL for build instructions (it's simple).
+See INSTALL for build instructions (it's simple). Requires JACK (version 1 or 2;
+http://http://jackaudio.org), clthreads (https://github.com/dmeliza/clthreads),
+and clxclient (https://github.com/dmeliza/clxclient)
 
 There are only three command line options:
 
@@ -10,25 +10,23 @@ There are only three command line options:
    -n  <channels>   set number of channels,
    -c  <pattern>    set trace color pattern.
 
-You can also use -name <name> to set the name used as a jack client. 
+You can also use -name <name> to set the name used as a jack client.
 
-The color pattern for -c should be a string consisting of the
-characters '1'..'4'. The pattern is repeated if there are more
-channels than the lenght of this string. The colors themselves
-are set in one of the configuration files.
+The color pattern for -c should be a string consisting of the characters
+'1'..'4'. The pattern is repeated if there are more channels than the lenght of
+this string. The colors themselves are set in one of the configuration files.
 
 See the file '.yassrc' for configuration file options.
 
 There are three buttons at the bottom of the screen.
 
-The '-' and '+' buttons decrease and increase the scrolling speed.
-The 'AGC' button enables a ratio 1/3 compressor on each channel.
-This provides a maximum gain of 40 dB, so a signal at -60 dB will
-show as -20 dB.
+The '-' and '+' buttons decrease and increase the scrolling speed. The 'AGC'
+button enables a ratio 1/3 compressor on each channel. This provides a maximum
+gain of 40 dB, so a signal at -60 dB will show as -20 dB.
 
 
 Enjoy !
 
--- 
+--
 FA
 
