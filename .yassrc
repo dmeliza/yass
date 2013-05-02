@@ -1,0 +1,36 @@
+% Configuration file for Yass
+
+% Everything in this file can also be put in a system-wide
+% configuration file '/etc/yass.conf'. 
+%
+% Instances started with -name NAME will read '~/.NAMErc' 
+% instead of this file.
+%
+% The same options can also be put in '~/.Xdefaults', and 
+% will then apply to all instances started by the same user.
+
+
+% Default number of channels, trace colors, and connections.
+% Modify as required.
+%
+Yass.nchan: 8
+Yass.trace.colors: 11223344
+Yass.input_1: alsa_pcm:capture_1
+Yass.input_2: alsa_pcm:capture_2
+Yass.input_3: alsa_pcm:capture_3
+Yass.input_4: alsa_pcm:capture_4
+Yass.input_5: alsa_pcm:capture_5
+Yass.input_6: alsa_pcm:capture_6
+Yass.input_7: alsa_pcm:capture_7
+Yass.input_8: alsa_pcm:capture_8
+
+% Alternate colors, uncomment and modify to taste.
+%
+%Yass.color.main.bg:    black
+%Yass.color.trace.bg:   white
+%Yass.color.trace.c0    gray50
+%Yass.color.trace.c1    blue
+%Yass.color.trace.c2    coral
+%Yass.color.trace.c3    darkgreen
+%Yass.color.trace.c4    black
+
