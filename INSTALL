@@ -1,17 +1,12 @@
-To install, cd to this directory,  make,
-make install (as root). 
+To install:
 
-You need the shared libraries:
-
-  libclthreads.so.2.2.0
-  libclxclient.so.3.3.1
- 
-and the corresponding header files installed. These are available at
-<http://users.skynet.be/solaris/linuxaudio>. 
+1. cd to this directory,
+2. run make
+3. run make install (as root).
 
 By default yass will be installed in /usr/bin. To change this,
 modify the PREFIX variable in the Makefile.
 
--- 
+--
 FA
 

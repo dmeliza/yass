@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2006 Fons Adriaensen <fons.adriaensen@skynet.be>
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -19,7 +19,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <clxclient.h>
+#include "clxclient.h"
 #include <jack/jack.h>
 #include "ringbuff.h"
 #include "global.h"
@@ -51,7 +51,7 @@ private:
     unsigned int    _fsamp;
     unsigned int    _fsize;
     unsigned int    _ncapt;
-  
+
     static void jack_static_shutdown (void *arg);
     static int  jack_static_callback (jack_nframes_t nframes, void *arg);
 };

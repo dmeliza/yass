@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2006 Fons Adriaensen <fons.adriaensen@skynet.be>
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -19,7 +19,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <clthreads.h>
+#include "clthreads.h"
 #include "styles.h"
 #include "mainwin.h"
 #include "jclient.h"
@@ -63,7 +63,7 @@ int main (int ac, char *av [])
 
     xresman.init (&ac, av, "yass", options, NOPTS);
     if (xresman.getb (".help", 0)) help ();
-            
+
     display = new X_display (xresman.get (".display", 0));
     if (display->dpy () == 0)
     {
@@ -112,7 +112,7 @@ int main (int ac, char *av [])
     delete mainwin;
     delete rootwin;
     delete display;
-   
+
     return 0;
 }
 

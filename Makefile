@@ -15,26 +15,31 @@
 #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 
-PREFIX = /usr
-SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
-LIBDIR = lib$(SUFFIX)
+PREFIX = /usr/local
 VERSION = 0.0.2
 DISTDIR = yass-$(VERSION)
-CPPFLAGS += -O3 -Wall -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" `freetype-config --cflags` `pkg-config jack --cflags`
+CPPFLAGS += -O3 -Wall -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS \
+	-DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" \
+	-I/usr/X11R6/include `freetype-config --cflags` `pkg-config jack --cflags`
 
+LDFLAGS += -L/usr/X11R6/$(LIBDIR)
+LDLIBS +=  -lX11 -lXft `freetype-config --libs` `pkg-config jack --libs`
 
-LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L/usr/X11R6/$(LIBDIR)
-LDLIBS += -lclthreads -lclxclient -lX11 `freetype-config --libs` `pkg-config jack --libs`
+CLTHREADS_O = p_thread.o a_thread.o itc_mesg.o itc_ip1q.o itc_ctrl.o textmsg.o
+CLTHREADS_H = clthreads.h
+
+CLXCLIENT_O = xdisplay.o xresman.o xhandler.o xwindow.o xdraw.o \
+	button.o textip.o enumip.o menuwin.o scale.o slider.o scroll.o mclist.o meter.o
+CLXCLIENT_H = clxclient.h
 
 YASS_O = ringbuff.o jclient.o mainwin.o styles.o yass.o
 YASS_H = ringbuff.h jclient.h mainwin.h styles.h
 
+%.o : %.cc
+	$(CXX) $(CPPFLAGS) -o $@ -c $<
 
-yass:	$(YASS_O)
-	g++ $(LDFLAGS) -o yass $(YASS_O) $(LDLIBS)
-
-$(YASS_O):	$(YASS_H)
-
+yass:	$(CLTHREADS_O) $(CLXCLIENT_O) $(YASS_O)
+	g++ $(LDFLAGS) -o yass $(CLTHREADS_O) $(CLXCLIENT_O) $(YASS_O) $(LDLIBS)
 
 install:	yass
 	/usr/bin/install -m 755 yass $(PREFIX)/bin

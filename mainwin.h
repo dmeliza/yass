@@ -1,6 +1,6 @@
 /*
   Copyright (C) 2006 Fons Adriaensen <fons.adriaensen@skynet.be>
-    
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -21,7 +21,7 @@
 #define __MAINWIN_H
 
 
-#include <clxclient.h>
+#include "clxclient.h"
 #include "ringbuff.h"
 #include "global.h"
 
@@ -47,7 +47,7 @@ public:
     bool running (void) const { return _state != EXIT; }
     int  handle_time (void);
     void handle_exit (void) { _state = EXIT; }
- 
+
 private:
 
     enum { WAIT, RUN, EXIT, NSPEED = 8 };
@@ -80,7 +80,7 @@ private:
     unsigned int   _quant;
     unsigned int   _speed;
     unsigned int   _ybase [MAX_CHAN];
-    unsigned long  _color [MAX_CHAN];         
+    unsigned long  _color [MAX_CHAN];
     float          _ymult;
     float          _ygain [MAX_CHAN];
 
