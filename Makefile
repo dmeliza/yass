@@ -18,12 +18,12 @@
 PREFIX = /usr/local
 VERSION = 0.0.2
 DISTDIR = yass-$(VERSION)
-CPPFLAGS += -O3 -Wall -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS \
+CPPFLAGS += -O3 -Wall -Wno-narrowing -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS \
 	-DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" \
-	-I/usr/X11R6/include `freetype-config --cflags` `pkg-config jack --cflags`
+	-I/usr/X11R6/include `pkg-config --cflags freetype2` `pkg-config jack --cflags`
 
 LDFLAGS += -L/usr/X11R6/$(LIBDIR)
-LDLIBS +=  -lX11 -lXft `freetype-config --libs` `pkg-config jack --libs`
+LDLIBS +=  -lX11 -lXft -lpthread `pkg-config --libs freetype2` `pkg-config jack --libs`
 
 CLTHREADS_O = p_thread.o a_thread.o itc_mesg.o itc_ip1q.o itc_ctrl.o textmsg.o
 CLTHREADS_H = clthreads.h
