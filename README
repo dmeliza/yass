@@ -25,7 +25,9 @@ gain of 40 dB, so a signal at -60 dB will show as -20 dB.
 
 YASS is by Fons Adriensen (<fons@kokkinizita.net>). The source hosted here
 includes the required clthreads and clxclient libraries, which are available
-separately at https://github.com/dmeliza/clthreads and
-https://github.com/dmeliza/clxclient.
+separately at https://codeberg.org/dmeliza/clthreads and
+https://codeberg.org/dmeliza/clxclient.
+
+This repository has been migrated to codeberg: https://codeberg.org/dmeliza/yass
 
 
